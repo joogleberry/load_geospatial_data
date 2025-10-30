@@ -1,0 +1,187 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Liberia"
+      },
+      "geometry": {
+        "coordinates": [
+          -85.44211163346692,
+          10.62646054573247
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Nicoya"
+      },
+      "geometry": {
+        "coordinates": [
+          -85.45508847203538,
+          10.138967525244269
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "San Jose"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.08004340101685,
+          9.936691112948964
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Puntarenas"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.83736755490644,
+          9.98542245559507
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Limon"
+      },
+      "geometry": {
+        "coordinates": [
+          -83.02875263030163,
+          9.991541650064292
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "San Isidro de El General"
+      },
+      "geometry": {
+        "coordinates": [
+          -83.70483959829373,
+          9.365442755931213
+        ],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "San Ramon"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.46996979251223,
+          10.083602077800975
+        ],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Buenos Aires"
+      },
+      "geometry": {
+        "coordinates": [
+          -83.33164247558031,
+          9.174543610653387
+        ],
+        "type": "Point"
+      },
+      "id": 7
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Cuidad Quesada"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.43075198508605,
+          10.326773271167724
+        ],
+        "type": "Point"
+      },
+      "id": 8
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Cartago"
+      },
+      "geometry": {
+        "coordinates": [
+          -83.92130266411198,
+          9.871161036299057
+        ],
+        "type": "Point"
+      },
+      "id": 9
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Jaco"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.62704522181451,
+          9.619737786156946
+        ],
+        "type": "Point"
+      },
+      "id": 10
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Cobano"
+      },
+      "geometry": {
+        "coordinates": [
+          -85.09856713832019,
+          9.689448241288446
+        ],
+        "type": "Point"
+      },
+      "id": 11
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "city": "Quepos"
+      },
+      "geometry": {
+        "coordinates": [
+          -84.15939468926834,
+          9.425889758072856
+        ],
+        "type": "Point"
+      },
+      "id": 12
+    }
+  ]
+}

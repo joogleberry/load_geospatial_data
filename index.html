@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Earthquake List</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            height: 100vh;
+            /* Panel on right */
+            flex-direction: row-reverse;
+            align-items: stretch;
+        }
+
+        #side-panel {
+            flex-basis: 500px;
+            overflow-y: scroll;
+            /* Center items */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #map {
+            flex-grow: 1;
+        }
+
+        /* Hide side panel when media screen is smaller than 1024px */
+        @media (max-width: 1024px) {
+            #side-panel {
+                transform: translateX(100%);
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: '100%';
+                background: white;
+                z-index: 10;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+            }
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="container">
+        <div id="side-panel">
+
+            <h2>Cities in Costa Rica</h2>
+            <button>Sort Alphabetically</button>
+
+            <table>
+                <tr>
+                    <th>city</th>
+                </tr>
+            </table>
+
+        </div>
+        <div id="map"></div>
+    </main>
+    <script>
+        // mapbox
+        mapboxgl.accessToken = "pk.eyJ1Ijoiam9vZ2xlYmVycnkiLCJhIjoiY202YjZqcHp3MDVjeDJqbzg5MTgwMng1ZSJ9.SYbn23E8INsag4nFhp7VDA"
+
+        let map = new mapboxgl.Map({
+            container: 'map',
+            // new style type
+            style: 'mapbox://styles/mapbox/dark-v11',
+            zoom: 7,
+            center: [-83.75, 9.75]
+        });
+
+        async function geojsonFetch(params) {
+            let response, cities, costarica, table;
+            response = await fetch('assets/cities.geojson');
+            cities = await response.json();
+            response = await fetch('assets/costarica.json');
+            costarica = await response.json();
+
+            table = document.getElementsByTagName("table")[0];
+            let row, cell;
+
+            // Build the table rows
+            for (let i = 0; i < cities.features.length; i++) {
+                row = table.insertRow(-1);
+                cell = row.insertCell(0);
+                cell.innerHTML = cities.features[i].properties.city;
+            }
+
+            // load data to the map
+            map.on('load', function loadingData() {
+
+                map.addSource('cities', {
+                    type: 'geojson',
+                    data: cities
+                });
+
+                map.addLayer({
+                    'id': 'cities-layer',
+                    'type': 'circle',
+                    'source': 'cities',
+                    'paint': {
+                        'circle-radius': 3,
+                        'circle-stroke-width': 2,
+                        'circle-color': 'red',
+                        'circle-stroke-color': 'white'
+
+                    }
+                });
+
+                map.addSource('costarica', {
+                    type: 'geojson',
+                    data: costarica
+                });
+
+                map.addLayer({
+                    'id': 'costarica-layer',
+                    'type': 'fill',
+                    'source': 'costarica',
+                    'paint': {
+                        'fill-color': '#0080ff',
+                        'fill-opacity': 0.16
+                    }
+                });
+
+            });
+        }
+
+        geojsonFetch();
+
+        let btn = document.getElementsByTagName("button")[0];
+        btn.addEventListener('click', sortTable);
+
+        function sortTable(e) {
+            // Get the table and its rows
+            const table = document.getElementsByTagName("table")[0];
+            const rows = Array.from(table.rows).slice(1); // skip header row if you have one
+
+            // Sort rows alphabetically based on the cell text
+            rows.sort((a, b) =>
+                a.cells[0].innerText.localeCompare(b.cells[0].innerText)
+            );
+
+            // Reattach sorted rows to the table body
+            rows.forEach(row => table.tBodies[0].appendChild(row));
+        }
+
+
+    </script>
+
+
+
+
+</body>
+<html>
